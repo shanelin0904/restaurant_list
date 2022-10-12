@@ -8,7 +8,6 @@ db.on('error', () => {
 })
 db.once('open', () => {
   console.log("running restaurantSeeder script...")
-
   Restaurant.create(restaurantList)
     .then(() => {
       console.log("restaurantSeeder done!")
