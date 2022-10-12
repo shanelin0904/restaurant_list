@@ -1,8 +1,8 @@
-![MyImage](https://scontent.ftpe3-1.fna.fbcdn.net/v/t39.30808-6/308599184_5461817890579845_1821577472467816282_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=730e14&_nc_ohc=zrqJZgB_QA0AX82Yp2N&_nc_ht=scontent.ftpe3-1.fna&oh=00_AT-dyy5flZaewU5Muyt90GOBMRAoZpxsuuR-uitxXkERlw&oe=633F44AA)
+![MyImage](https://scontent.ftpe3-1.fna.fbcdn.net/v/t39.30808-6/309192538_5487394244688876_6926205348074357392_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=730e14&_nc_ohc=i44TLHVthm0AX9SEiZ1&tn=cwOdfn5_7-evN844&_nc_ht=scontent.ftpe3-1.fna&oh=00_AT-FNj9hg6dDzCSjcrk2jMyfXBP4N-t8odlV7IPztYzf7w&oe=634B0CBC)
 # Restaurant_list
 This is a simple restaurant list for Taipei Foodie
 ##  Dependency
-This project is build by: node.js: 14.16.0 nodemon: 2.0.20 bootstrap: 4.3.1 express: 4.16.4 express-handlebars: 3.0.0
+This project is build by: node.js: 14.16.0 nodemon: 2.0.20 bootstrap: 4.3.1 express: 4.16.4 express-handlebars: 3.0.0 body-parser: ^1.20.1 mongoose: ^5.9.7
 ##  Features
 1.Index Page: user can see all restaurants on index page, includes:
  * photo of restaurant
@@ -11,12 +11,24 @@ This project is build by: node.js: 14.16.0 nodemon: 2.0.20 bootstrap: 4.3.1 expr
  * rate of restaurant
 
 
-2.User can click restaurant to see further details, includes:
+2.User can click 詳細資訊(details) to see further details, includes:
  * catagory
  * address
  * phone number
  * simple description of restaurant
  * photo
+ 
+ 3.User can click 編輯(edit) to see change details, includes:
+ * catagory
+ * address
+ * phone number
+ * simple description of restaurant
+ * photo
+ 
+ 4.User can click trashcan icon to delete the restaurant above
+ 
+ 5.User can create a restaurant and its details
+
 ## Enviroment setup
 Node.js
 ## Start this Project
