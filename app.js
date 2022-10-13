@@ -6,6 +6,7 @@ const exphbs = require('express-handlebars')
 //載入restaurant 資料庫
 const Restaurant = require('./models/restaurant.js')
 //設定資料庫連線(但為什麼是在這裡連線??)
+const methodOverride = require('method-override')
 const mongoose = require('mongoose')
 
 mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -25,7 +26,7 @@ app.set('view engine', 'handlebars')
 app.use(express.static('public'))
 //這是設定啥
 app.use(express.urlencoded({ extended: true }))
-
+app.use(methodOverride('_method'))
 
 // 所有路由的設定
 
@@ -85,7 +86,6 @@ app.get("/restaurants/:restaurantId/edit", (req, res) => {
 app.put("/restaurants/:restaurantId", (req, res) => {
   const { restaurantId } = req.params
   Restaurant.findByIdAndUpdate(restaurantId, req.body)
-    //可依照專案發展方向自定編輯後的動作，這邊是導向到瀏覽特定餐廳頁面
     .then(() => res.redirect(`/restaurants/${restaurantId}`))
     .catch(err => console.log(err))
 })
