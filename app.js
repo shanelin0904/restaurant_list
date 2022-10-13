@@ -5,23 +5,13 @@ const port = 3000
 const exphbs = require('express-handlebars')
 //載入restaurant 資料庫
 const Restaurant = require('./models/restaurant.js')
-//設定資料庫連線(但為什麼是在這裡連線??)
+//連線資料庫
+require('./config/mongoose')
 const methodOverride = require('method-override')
-const mongoose = require('mongoose')
+
 // 引用路由器
 const routes = require('./routes')
 
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-
-const db = mongoose.connection
-
-db.on('error', () => {
-  console.log('mongodb error')
-})
-
-db.once('open', () => {
-  console.log('mongodb connected')
-})
 //設定樣板引擎
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
