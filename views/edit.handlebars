@@ -3,12 +3,12 @@
   <form action="/restaurants/{{restaurantData._id}}?_method=PUT" method="POST">
     <div class="mb-3">
       <label for="name" class="form-label">店名<span class="text-danger">*</span></label>
-      <input type="text" class="form-control" id="name" placeholder="Alpha 科技餐廳" name="name"
+      <input type="text" class="form-control" id="name" placeholder="請輸入餐廳名稱" name="name"
         value="{{restaurantData.name}}" required />
     </div>
     <div class="mb-3">
       <label for="name_en" class="form-label">英文店名<span class="text-danger">*</span></label>
-      <input type="text" class="form-control" id="name_en" placeholder="Alpha Tech Theme Restaurant" name="name_en"
+      <input type="text" class="form-control" id="name_en" placeholder="Please enter the restaurant name you want to create" name="name_en"
         value="{{restaurantData.name_en}}" required />
     </div>
     <div class="mb-3">
@@ -30,7 +30,7 @@
     </div>
     <div class="mb-3">
       <label for="location" class="form-label">地址<span class="text-danger">*</span></label>
-      <input type="text" class="form-control" id="location" placeholder="台中市北屯區迷有這條路520號" name="location"
+      <input type="text" class="form-control" id="location" placeholder="輸入餐廳地址" name="location"
         value="{{restaurantData.location}}" required />
     </div>
     <div class="mb-3">
@@ -49,7 +49,7 @@
         value="{{restaurantData.rating}}" required />
     </div>
     <div class="mb-3">
-      <label for="description" class="form-label">敘述<span class="text-danger">*</span></label>
+      <label for="description" class="form-label">敘述</label>
       <textarea class="form-control" id="description" rows="3" name="description"
         required>{{restaurantData.description}}</textarea>
     </div>
