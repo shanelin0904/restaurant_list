@@ -37,15 +37,6 @@ app.get('/', (req, res) => {
     .catch(error => console.error(error)) // 錯誤處理
 })
 
-// 查看特定餐廳
-app.get("/restaurants/:restaurantId", (req, res) => {
-  const { restaurantId } = req.params
-  Restaurant.findById(restaurantId)
-    .lean()
-    .then(restaurant => res.render("show", { restaurant }))
-    .catch(err => console.log(err))
-})
-
 //搜尋餐廳
 app.get('/search', (req, res) => {
   const keyword = req.query.keyword
@@ -59,9 +50,7 @@ app.get('/search', (req, res) => {
       res.render('index', { restaurantsData: filterRestaurants, keyword: keyword })
     })
     .catch(err => console.log(err))
-  })
-
-
+})
 // 進入「新增」餐廳頁面
 app.get("/restaurants/new", (req, res) => {
   res.render("new")
@@ -74,6 +63,14 @@ app.post("/restaurants", (req, res) => {
     .catch(err => console.log(err))
 })
 
+// 查看特定餐廳
+app.get("/restaurants/:restaurantId", (req, res) => {
+  const { restaurantId } = req.params
+  Restaurant.findById(restaurantId)
+    .lean()
+    .then(restaurant => res.render("show", { restaurant }))
+    .catch(err => console.log(err))
+})
 
 // 進入「編輯」餐廳頁面
 app.get("/restaurants/:restaurantId/edit", (req, res) => {
