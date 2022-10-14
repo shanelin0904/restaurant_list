@@ -1,4 +1,4 @@
-function sorting(sort) {
+function sorting (sort) {
   switch (sort) {
     case '1':
       return { name: 'asc' }

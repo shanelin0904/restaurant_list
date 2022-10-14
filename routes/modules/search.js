@@ -4,7 +4,7 @@ const router = express.Router()
 // 引用 Todo model
 const Restaurant = require('../../models/restaurant')
 const sorting = require('../../utilities/sort')
-//搜尋餐廳
+// 搜尋餐廳
 router.get('/', (req, res) => {
   const keyword = req.query.keyword
   const sortingType = req.query.sort
@@ -21,7 +21,7 @@ router.get('/', (req, res) => {
       const filterRestaurants = restaurantsData.filter(restaurant => {
         return restaurant.name_en.toLowerCase().includes(keyword.toLowerCase()) || restaurant.name.includes(keyword) || restaurant.category.includes(keyword)
       })
-     res.render('index', { restaurantsData: filterRestaurants, keyword: keyword, typeObject })
+      res.render('index', { restaurantsData: filterRestaurants, keyword, typeObject })
     })
     .catch(err => console.log(err))
 })
