@@ -1,8 +1,15 @@
-![MyImage](https://scontent.ftpe3-1.fna.fbcdn.net/v/t39.30808-6/309192538_5487394244688876_6926205348074357392_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=730e14&_nc_ohc=i44TLHVthm0AX9SEiZ1&tn=cwOdfn5_7-evN844&_nc_ht=scontent.ftpe3-1.fna&oh=00_AT-FNj9hg6dDzCSjcrk2jMyfXBP4N-t8odlV7IPztYzf7w&oe=634B0CBC)
+![MyImage](https://scontent.ftpe3-1.fna.fbcdn.net/v/t39.30808-6/310108649_5494636220631345_2144659569944538085_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=730e14&_nc_ohc=xWVhSlHgMSsAX_4XbPr&_nc_ht=scontent.ftpe3-1.fna&oh=00_AT974Fh5GotM0Dz-Y5fvIzQz4d8Yym7OnIMoxAZpyVhmHw&oe=634E7D05)
 # Restaurant_list
 This is a simple restaurant list for Taipei Foodie
 ##  Dependency
-This project is build by: node.js: 14.16.0 nodemon: 2.0.20 bootstrap: 4.3.1 express: 4.16.4 express-handlebars: 3.0.0 body-parser: ^1.20.1 mongoose: ^5.9.7
+This project is build by: 
+* node.js: 14.16.0 
+* nodemon: 2.0.20 bootstrap: 
+* 4.3.1 express: 4.16.4 
+* express-handlebars: 3.0.0 
+* body-parser: ^1.20.1 
+* mongoose: ^5.9.7 
+* method-override: ^3.0.0
 ##  Features
 1.Index Page: user can see all restaurants on index page, includes:
  * photo of restaurant
@@ -41,16 +48,27 @@ git clone
 
 3.enter following command in your terminal
 ```
-npm install https://github.com/LazerLotus/restaurant_list
+npm install https://github.com/shanelin0904/restaurant_list
 ```
 4.after installation, enter following command in your terminal
 ```
-npm run dev
+npm run seed
 ```
 5.check following message is shown on terminal
 ```
-Express is listening on localhost:3000
+running restaurantSeeder script...
+restaurantSeeder done!
 ```
-6.open your browser and type http://localhost:3000 on url input
+6.after that, enter following command in your terminal
+```
+npm run dev
+```
 
-7.if you want to stop service, please press ctrl+c/command+c on your terminal
+7.check following message is shown on terminal
+```
+Express is listening on localhost:3000
+mongodb connected!
+```
+8.open your browser and type http://localhost:3000 on url input
+
+9.if you want to stop service, please press ctrl+c/command+c on your terminal
