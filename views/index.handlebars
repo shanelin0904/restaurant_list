@@ -2,19 +2,25 @@
 <div class="container search-bar">
   <div class="search-bar-outer">
     <div class="search-bar-inner">
-      <form action="/search">
-        <h4 class="mb-2">尋找餐廳：</h4>
-        <div class="input-group">
-          <input type="text" name="keyword" class="form-control" placeholder="輸入餐廳、分類" aria-label="Restaurant Name..."
+      <h4 class="mb-2">尋找餐廳：</h4>
+        <form action="/search">
+          <div class="input-group col-20">
+            <input type="text" name="keyword" class="form-control" placeholder="輸入餐廳、分類" aria-label="Restaurant Name..."
             value="{{keyword}}" aria-describedby="search-button">
-          <div class="input-group-append">
+            <div class="input-group-append">
             <button class="btn btn-major" type="submit" id="search-button"><i class="fas fa-search"></i></button>
+            </div>
+          <div class="input-group col-3">
+            <select class="form-select w-50" id="sort" name="sort">
+              <option value="1" {{#if typeObject.isOne }}selected{{/if}}>A > Z</option>
+              <option value="2" {{#if typeObject.istwo }}selected{{/if}}>Z > A</option>
+              <option value="3" {{#if typeObject.isThree }}selected{{/if}}>類別</option>
+              <option value="4" {{#if typeObject.isFour }}selected{{/if}}>地區</option>
+            </select>
           </div>
         </div>
       </form>
-      <div class="text-end mg-3">
-        <a href="/restaurants/new"><button class="btn btn-primary">新增喜歡的餐廳</button></a>
-      </div>
+
     </div>
   </div>
 </div>
@@ -43,31 +49,23 @@
           <div class="card-footer d-flex justify-content-end ">
             <a href="/restaurants/{{this._id}}/edit"><button type="button" class="btn btn-link btn-sm">編輯</button></a>
             <a href="/restaurants/{{this._id}}"><button type="button" class="btn btn-link btn-sm">詳細資訊</button></a>
-
-            <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal"><i
-                class="fa fa-trash" aria-hidden="true"></i></button>
-
+            <form action="/restaurants/{{this._id}}?_method=DELETE" method="post"onsubmit="return deleteRestaurant()">
+              <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash" aria-hidden="true"></i>
+              </button>
+              <script>
+              function deleteRestaurant() {
+                let result = confirm('確定要刪除該筆餐廳資料?')
+                if (result) {
+                  return true
+                } else {
+                  return false
+                }
+              }
+              </script>
+            </form>
           </div>
         </div>
         {{/each}}
-      </div>
-    </div>
-  </div>
-</div>
-
-{{!-- delete modal --}}
-<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">您要刪除嗎？</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-footer">
-        <form action="/restaurants/{{restaurant._id}}?_method=DELETE" method="post">
-          <button type="submit" class="btn btn-danger btn-sm">刪除</button>
-        </form>
-        <button type="button" class="btn btn-primary btn-sm" data-bs-dismiss="modal">不</button>
       </div>
     </div>
   </div>
