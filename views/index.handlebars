@@ -3,13 +3,13 @@
   <div class="search-bar-outer">
     <div class="search-bar-inner">
       <h4 class="mb-2">尋找餐廳：</h4>
-        <form action="/search">
-          <div class="input-group col-20">
-            <input type="text" name="keyword" class="form-control" placeholder="輸入餐廳、分類" aria-label="Restaurant Name..."
+      <form action="/search">
+        <div class="input-group col-20">
+          <input type="text" name="keyword" class="form-control" placeholder="輸入餐廳、分類" aria-label="Restaurant Name..."
             value="{{keyword}}" aria-describedby="search-button">
-            <div class="input-group-append">
+          <div class="input-group-append">
             <button class="btn btn-major" type="submit" id="search-button"><i class="fas fa-search"></i></button>
-            </div>
+          </div>
           <div class="input-group col-3">
             <select class="form-select w-50" id="sort" name="sort">
               <option value="1" {{#if typeObject.isOne }}selected{{/if}}>A > Z</option>
@@ -49,19 +49,10 @@
           <div class="card-footer d-flex justify-content-end ">
             <a href="/restaurants/{{this._id}}/edit"><button type="button" class="btn btn-link btn-sm">編輯</button></a>
             <a href="/restaurants/{{this._id}}"><button type="button" class="btn btn-link btn-sm">詳細資訊</button></a>
-            <form action="/restaurants/{{this._id}}?_method=DELETE" method="post"onsubmit="return deleteRestaurant()">
+            <form action="/restaurants/{{this._id}}?_method=DELETE" method="post"
+              onsubmit="return confirm('要刪除這筆餐廳資料嗎?按下去不回頭歐')">
               <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash" aria-hidden="true"></i>
               </button>
-              <script>
-              function deleteRestaurant() {
-                let result = confirm('確定要刪除該筆餐廳資料?')
-                if (result) {
-                  return true
-                } else {
-                  return false
-                }
-              }
-              </script>
             </form>
           </div>
         </div>
