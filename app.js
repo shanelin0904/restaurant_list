@@ -1,6 +1,9 @@
 // 載入專案需要用到的框架和工具包(Packages)
 const express = require('express')
 const session = require('express-session')
+
+const usePassport = require('./config/passport')
+
 const app = express()
 const PORT = process.env.PORT || 3000
 const exphbs = require('express-handlebars')
@@ -22,6 +25,8 @@ app.use(session({
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
+// 呼叫 Passport 函式並傳入 app，這條要寫在路由之前
+usePassport(app)
 app.use(routes)
 
 // 啟動伺服器
