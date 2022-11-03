@@ -15,7 +15,7 @@ const users = require('./modules/users')  // add this
 router.use('/restaurants', authenticator, restaurant)
 
 // 將網址結構符合 /search 字串開頭的 request 導向search模組
-router.use('/search', search)
+router.use('/search', authenticator, search)
 
 // 將網址結構符合 /users 字串開頭的 request 導向users模組
 router.use('/users', users)  // add this
