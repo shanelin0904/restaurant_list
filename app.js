@@ -9,6 +9,9 @@ const PORT = process.env.PORT || 3000
 const exphbs = require('express-handlebars')
 const methodOverride = require('method-override')
 const flash = require('connect-flash')
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
 const bodyParser = require('body-parser')
 // 引用路由器
 const routes = require('./routes')
@@ -19,7 +22,7 @@ app.set('view engine', 'handlebars')
 app.use(express.static('public'))
 
 app.use(session({
-  secret: 'ThisIsMySecret',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true
 }))
