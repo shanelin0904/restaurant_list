@@ -53,13 +53,13 @@ Node.js
 ### Before you get started,make sure you've already installed node.js and npm
 1.Open your Terminal
 ```
-git clone 
+git clone https://github.com/shanelin0904/restaurant_list
 ```
 2.Change directory to resraurant_list
 
-3.Enter following command in your terminal
+3.Enter following command in your terminal to install packages required
 ```
-npm install https://github.com/shanelin0904/restaurant_list
+npm install 
 ```
 4.Load seeddata
 ```
