@@ -8,13 +8,14 @@ const sorting = require('../../utilities/sort')
 router.get('/', (req, res) => {
   const keyword = req.query.keyword
   const sortingType = req.query.sort
+  const userId = req.user._id
   const typeObject = {
     isOne: sortingType === '1',
     isTwo: sortingType === '2',
     isThree: sortingType === '3',
     isFour: sortingType === '4'
   }
-  Restaurant.find({})
+  Restaurant.find({ userId })
     .lean()
     .sort(sorting(sortingType))
     .then(restaurantsData => {
