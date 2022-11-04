@@ -55,23 +55,26 @@ Node.js
 ```
 git clone 
 ```
-2.change directory to resraurant_list
+2.Change directory to resraurant_list
 
-3.enter following command in your terminal
+3.Enter following command in your terminal
 ```
 npm install https://github.com/shanelin0904/restaurant_list
 ```
-
-4.after that, enter following command in your terminal
+4.Load seeddata
 ```
-npm run dev
+npm run seed
+```
+5.After that, enter following command in your terminal
+```
+npm run start
 ```
 
-5.check following message is shown on terminal
+6.Check following message is shown on terminal
 ```
 Express is listening on localhost:3000
 mongodb connected!
 ```
-6.open your browser and type http://localhost:3000 on url input
+7.Open your browser and type http://localhost:3000 on url input
 
-7.if you want to stop service, please press ctrl+c/command+c on your terminal
+8.If you want to stop service, please press ctrl+c/command+c on your terminal
