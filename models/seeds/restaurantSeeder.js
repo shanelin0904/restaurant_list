@@ -6,41 +6,42 @@ const Restaurant = require('../restaurant') // 載入 restaurant model
 const User = require('../user')
 const db = require('../../config/mongoose')
 const restaurantList = require('../../restaurant.json').results// 載入種子json
-const seedUser = 
-  { name: '昱欣寶寶',
-    email: 'modelUser@example.com',
-    password: '12345678',   
-  
+const seedUser = [
+  {
+    name: '範例1',
+    email: 'user1@example.com',
+    password: '12345678',
+    restaurantIndex: [0, 1, 2]
+  },
+  {
+    name: '範例2',
+    email: 'user2@example.com',
+    password: '12345678',
+    restaurantIndex: [3, 4, 5]
   }
+]
 
 db.once('open', () => {
-  bcrypt
-    .genSalt(10)
-    .then(salt => bcrypt.hash(seedUser.password, salt))
-    .then(hash => User.create({
-      name: seedUser.name,
-      email: seedUser.email,
-      password: hash
-    }))
-  
-    .then(user => {
-      const userId = user._id
-      return Promise.all(Array.from(
-        { length: 8 },
-        (_, i) => Restaurant.create({ name: restaurantList[i].name, 
-          name_en: restaurantList[i].name_en, 
-          category: restaurantList[i].category, 
-          image: restaurantList[i].image, 
-          location: restaurantList[i].location, 
-          phone: restaurantList[i].phone, 
-          google_map: restaurantList[i].google_map, 
-          rating: restaurantList[i].rating, 
-          description: restaurantList[i].description, 
-          userId })
-      ))
+  return Promise.all(
+    seedUser.map((user) => {
+      const { name, email, password, restaurantIndex } = user
+      return User.create({
+        name,
+        email,
+        password: bcrypt.hashSync(password, bcrypt.genSaltSync(10))
+      }).then((user) => {
+        const restaurants = restaurantIndex.map((index) => {
+          const restaurant = restaurantList[index]
+          restaurant.userId = user._id
+          return restaurant
+        })
+        return Restaurant.create(restaurants)
+      })
     })
+  )
     .then(() => {
-      console.log('done.')
+      console.log('Restaurant list seeders already created !')
       process.exit()
     })
-  })
+    .catch((error) => console.log(error))
+})
